@@ -1,0 +1,22 @@
+--- a/src/de/infsec/tpl/LibraryHandler.java
++++ b/src/de/infsec/tpl/LibraryHandler.java
+@@ -171,7 +171,7 @@
+ 				if (WalaUtils.isInnerClass(clazz)) innerClCount++;
+ 				
+ 				for (IMethod im: clazz.getDeclaredMethods()) {
+-					if (im.isBridge() || im.isMethodSynthetic()) continue;
++					if (im.isBridge() || im.isSynthetic()) continue;
+ 					
+ 					if (im.isPublic()) {
+ 						publicMethodCount++;
+--- a/src/de/infsec/tpl/hash/HashTree.java
++++ b/src/de/infsec/tpl/hash/HashTree.java
+@@ -526,7 +526,7 @@
+ 				
+ 				for (IMethod m: methods) {
+ 					// normalize java|dex bytecode by skipping compiler-generated methods
+-					if (m.isBridge() || m.isMethodSynthetic()) {
++					if (m.isBridge() || m.isSynthetic()) {
+ 						continue;
+ 					}
+ 					

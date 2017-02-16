@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+COMMIT_ID = dcd2a9ebc1b1241ecc0ea56b7b6de2ddbd1e2c1b
+
+%:
+	dh $@ --with maven_repo_helper --buildsystem=gradle
+
+override_dh_auto_build:
+	dh_auto_build -- --settings-file debian/settings.gradle
+
+override_dh_install:
+	dh_install
+	unzip data/library-profiles.zip -d debian/libscout/usr/share/libscout/data
+
+get-orig-source: archive.tar.gz
+	mk-origtargz --repack --compression xz $<
+
+archive.tar.gz:
+	wget https://projects.cispa.uni-saarland.de/derr/libscout/repository/archive.tar.gz?ref=$(COMMIT_ID) -O $@
+
+.PHONY: get-orig-source

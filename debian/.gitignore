@@ -1,0 +1,10 @@
+/.gradle/
+/.javahelper_clean
+/.mh/
+/*.docbase.javadoc
+/*.log
+/*.substvars
+/build/
+/debhelper-build-stamp
+/files
+/libscout/

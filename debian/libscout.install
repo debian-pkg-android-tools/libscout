@@ -1,0 +1,6 @@
+build/debian/libscout.classpath    usr/share/libscout
+debian/additionalSrc/bash/libscout usr/share/libscout
+data/app_version_codes.csv         usr/share/libscout/data
+data/library-data.sqlite           usr/share/libscout/data
+logging                            usr/share/libscout
+scripts                            usr/share/libscout

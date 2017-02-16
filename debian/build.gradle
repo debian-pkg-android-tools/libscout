@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+group = 'de.infsec.tpl.libscout'
+version = '0.0'
+sourceSets.main.java.srcDir 'src'
+jar.manifest.attributes(
+  'Application': 'LibScout',
+  'Built-By': 'Erik Derr',
+  'Main-Class': 'de.infsec.tpl.TplCLI'
+)
+
+dependencies {
+  compile 'com.ibm.wala:wala-dalvik:debian'
+  compile 'commons-cli:commons-cli:debian'
+  compile 'commons-io:commons-io:debian'
+  compile 'com.android:android:23'
+}
+
+task generateClasspath {
+  group = 'build'
+  description = 'Generates a classpath list used when loading the JAR.'
+  def classpathFilePath = "${buildDir}/debian/${project.name}.classpath"
+  outputs.files classpathFilePath
+  doFirst {
+    mkdir "${buildDir}/debian"
+    def classpathFile = file(classpathFilePath)
+    classpathFile.createNewFile()
+    classpathFile.write(
+      configurations.runtime.collect { it.path }.toSorted().join(':')
+    )
+  }
+}
+
+defaultTasks 'assemble', 'generateClasspath'

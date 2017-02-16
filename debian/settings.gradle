@@ -1,0 +1,3 @@
+rootProject.name = 'libscout'
+rootProject.projectDir = file('..')
+rootProject.buildFileName = 'debian/build.gradle'
