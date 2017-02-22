@@ -1,4 +1,4 @@
-libscout (0.0~git20161124~dcd2a9e-1) UNRELEASED; urgency=medium
+libscout (0.0~git20161124~dcd2a9e-1) unstable; urgency=medium
 
   * Initial release. (Closes: #855861)
 
