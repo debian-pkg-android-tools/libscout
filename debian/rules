@@ -11,6 +11,8 @@ override_dh_auto_build:
 override_dh_install:
 	dh_install
 	unzip data/library-profiles.zip -d debian/libscout/usr/share/libscout/data
+	# Set a fixed timestamp for the unzipped files for reproducibility
+	find debian/libscout/usr/share/libscout/data -exec touch -t 201112210000 {} \;
 
 get-orig-source: archive.tar.gz
 	mk-origtargz --repack --compression xz $<
